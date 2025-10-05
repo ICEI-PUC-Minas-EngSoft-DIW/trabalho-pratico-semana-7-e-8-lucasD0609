@@ -19,11 +19,11 @@ Leia o enunciado completo no Canvas.
 
 ## Print da Home-Page
 
-![alt text](./public/img/tela)
+![alt text](./public/img/tela.png)
 
 ## Print da página de detalhes do item
 
-![alt text](./public/img/detalhes)
+![alt text](./public/img/detalhes.png)
 
 ## Cole aqui abaixo a estrutura JSON utilizada no app.js
 
