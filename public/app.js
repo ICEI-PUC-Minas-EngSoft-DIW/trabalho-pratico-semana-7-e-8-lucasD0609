@@ -2,37 +2,35 @@ const dados = [
   {
     id: 1,
     titulo: "Líder de Ginásio",
-    descricao: "Álbum com sonoridade indie experimental.",
-    conteudo: "Produzido de forma independente, o álbum mistura pop alternativo e sintetizadores.",
-    categoria: "Indie BR",
-    autor: "Líder de Ginásio",
-    data: "2025-02-10",
+    descricao: "O rap alternativo que transforma batalhas pessoais em trap eletrônico, celebrando a conquista de cada insígnia na vida urbana.",
+    conteudo: "O álbum Líder de Ginásio, lançado por virgingod* em 2022, é uma obra que utiliza o universo de Pokémon como uma metáfora para jornadas pessoais. A coletânea de 13 faixas, com pouco mais de 25 minutos de duração, explora temas de autodescoberta e desafios emocionais.",
+    categoria: "Plugg, Rap",
+    autor: "Virgingod*",
+    data: "25/11/2022",
     imagem: "img/liderdeginasio.png"
   },
   {
     id: 2,
     titulo: "Estar sozinha não é um sentimento",
-    descricao: "Uma viagem introspectiva com tons de dream pop.",
-    conteudo: "O grupo Plumas entrega um som delicado e emocional que reflete as dores e delícias da juventude.",
-    categoria: "Indie Pop",
-    autor: "Plumas de Cera",
-    data: "2025-02-22",
+    descricao: "Uma viagem introspectiva com tons de melancólica.",
+    conteudo: "A obra é marcada por uma sonoridade introspectiva e, por vezes, melancólica, explorando temas de solidão, relacionamentos complexos e angústias emocionais. O título, que aparece como um verso em uma de suas músicas, reflete a profundidade lírica do artista ao questionar e desmistificar a natureza dos sentimentos e do isolamento",
+    categoria: "Hip Hop, Rap",
+    autor: "Plumasdecera",
+    data: "06/09/2024",
     imagem: "img/plumasdecera.png"
   },
   {
     id: 3,
     titulo: "Kebrada Boyz",
-    descricao: "Som alternativo com influência urbana e eletrônica.",
-    conteudo: "A banda traz letras diretas e batidas marcantes, retratando o cotidiano das periferias.",
-    categoria: "Indie Urbano",
-    autor: "Kebrada Boyz",
-    data: "2025-03-01",
+    descricao: "Trap alternativo com a urgência urbana, onde batidas eletrônicas e melancólicas narram a introspecção da periferia e do autor.",
+    conteudo: "É uma obra marcada por uma sonoridade de Trap melancólico (ou sad trap), onde as letras misturam a realidade da periferia (quebrada) com temas de angústia, tristeza e introspecção.",
+    categoria: "Rap, Trap",
+    autor: "Linkdozap",
+    data: "11/08/2022",
     imagem: "img/linkdozap.png"
   }
 ];
-
-const container = document.querySelector(".row.g-4");
-
+const container = document.getElementById("lista-albuns");
 if (container) {
   dados.forEach(item => {
     const card = document.createElement("div");
@@ -49,4 +47,26 @@ if (container) {
     `;
     container.appendChild(card);
   });
+}
+
+const detalhesContainer = document.getElementById("detalhes");
+if (detalhesContainer) {
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get("id"));
+
+  const item = dados.find(d => d.id === id);
+
+  if (item) {
+    detalhesContainer.innerHTML = `
+      <h2>${item.titulo}</h2>
+      <img src="${item.imagem}" alt="${item.titulo}" class="img-fluid mb-3" style="max-width: 400px;">
+      <p><strong>Autor:</strong> ${item.autor}</p>
+      <p><strong>Categoria:</strong> ${item.categoria}</p>
+      <p><strong>Data:</strong> ${item.data}</p>
+      <p>${item.conteudo}</p>
+      <a href="index.html" class="btn btn-dark mt-3">Voltar para Home</a>
+    `;
+  } else {
+    detalhesContainer.innerHTML = "<p>Álbum não encontrado.</p>";
+  }
 }
